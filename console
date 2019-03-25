@@ -6,5 +6,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Symfony\Component\Console\Application;
 
 $app = new Application();
-$app->add(new \Patterns\Commands\StrategyCommand());
+
+foreach (require_once 'commands_list.php' as $command) {
+    $app->add($command);
+}
+
 $app->run();
